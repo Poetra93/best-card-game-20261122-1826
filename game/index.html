@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sigil Duel — a four-winds card duel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="hud">
+    <div class="duelist rival">
+      <div class="duelist-name">VEX <span class="duelist-tag">rival</span></div>
+      <div id="rival-life" class="life"></div>
+    </div>
+    <div class="hud-mid">
+      <div id="turn-label" class="turn-label">Turn 1</div>
+      <div id="taunt" class="taunt"></div>
+    </div>
+    <div class="duelist player">
+      <div class="duelist-name">YOU <span class="duelist-tag">duelist</span></div>
+      <div id="player-life" class="life"></div>
+    </div>
+  </header>
+
+  <main class="table">
+    <section class="rival-zone">
+      <div class="zone-label">Vex’s hand · <span id="rival-count"></span></div>
+      <div id="rival-hand" class="hand rival-hand"></div>
+    </section>
+
+    <section class="mid-row">
+      <div class="tele-box">
+        <div class="zone-label">Vex’s telegraph</div>
+        <div id="telegraph-slot"></div>
+      </div>
+      <div class="field-box">
+        <div class="zone-label">The table · <span id="chain-label"></span></div>
+        <div id="field-cards" class="field-cards"></div>
+      </div>
+      <div class="log-box">
+        <div class="zone-label">Duel log</div>
+        <ul id="log" class="log"></ul>
+      </div>
+    </section>
+
+    <section class="player-zone">
+      <div class="zone-label">Your hand · click a card to play it (keys 1–7) · <span id="ember-label"></span> <span id="ember-pips" class="ember-pips"></span></div>
+      <div id="player-hand" class="hand player-hand"></div>
+    </section>
+
+    <div class="controls">
+      <button id="end-turn-btn" class="btn primary">End turn <kbd>E</kbd></button>
+      <button id="mute-btn" class="btn">🔊 Sound on</button>
+      <span class="hint">Chain one suit for +2, +4… · Counter Vex’s telegraphed suit for +3 · Ward blocks damage</span>
+    </div>
+    <div id="legend-slot" class="legend-slot"></div>
+  </main>
+
+  <div id="title-overlay" class="overlay">
+    <div class="title-card">
+      <div class="title-suits" aria-hidden="true">
+        <span class="t-suit flame">▲</span><span class="t-suit gale">🌀</span><span class="t-suit tide">≋</span><span class="t-suit stone">◆</span>
+      </div>
+      <h1 class="title">SIGIL DUEL</h1>
+      <p class="subtitle">A four-winds card duel against Vex</p>
+      <p class="rules">
+        You and Vex each hold 30 life. Play sigil cards for ember, chain one suit
+        for bonus power, and counter Vex’s telegraphed suit to strike harder.
+        Flame beats Gale, Gale beats Tide, Tide beats Stone, Stone beats Flame.
+      </p>
+      <button id="start-btn" class="btn primary big">Begin the duel <kbd>Enter</kbd></button>
+      <p class="keys">Mouse or keys 1–7 to play · E to end turn · M to mute</p>
+    </div>
+  </div>
+
+  <div id="end-overlay" class="overlay hidden">
+    <div id="confetti-layer" class="confetti-layer"></div>
+    <div class="title-card end-card">
+      <h1 id="end-title" class="end-title win">YOU WIN</h1>
+      <p id="end-sub" class="subtitle"></p>
+      <p id="end-stats" class="stats"></p>
+      <button id="again-btn" class="btn primary big">Duel again <kbd>Enter</kbd></button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
